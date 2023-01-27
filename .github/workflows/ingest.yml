@@ -1,0 +1,22 @@
+name: "Ingestinator"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  test-ingest:
+    runs-on: ubuntu-latest
+    name: "Test Ingestinator"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Ingestinator"
+        uses: sjungling/ingestinator@main
+        with:
+          build-tool: maven
+          repository-type: artifactory
+          repository-url: ${{ SECRETS.ARTIFACTORY_URI }}
+          repository-username: ${{ SECRETS.ARTIFACTORY_USER }}
+          repository-password: ${{ SECRETS.ARTIFACTORY_PASSWORD }}
