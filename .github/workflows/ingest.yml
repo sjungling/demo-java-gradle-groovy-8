@@ -15,7 +15,8 @@ jobs:
       - name: "Ingestinator"
         uses: sjungling/ingestinator@main
         with:
-          build-tool: maven
+          java-version: 11
+          build-tool: gradle
           repository-type: artifactory
           repository-url: ${{ SECRETS.ARTIFACTORY_URI }}
           repository-username: ${{ SECRETS.ARTIFACTORY_USER }}
